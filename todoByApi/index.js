@@ -22,6 +22,8 @@ const envOrigins = (process.env.FRONTEND_URL || "")
   .filter(Boolean);
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://track-one-sepia.vercel.app",
+  "https://traacckk.vercel.app",
   ...envOrigins
 ];
 // Allow common host patterns in addition to explicit list
@@ -39,7 +41,7 @@ app.use(cors({
   },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
+  credentials: false,
   optionsSuccessStatus: 200
 }));
 // Ensure preflight requests are handled
