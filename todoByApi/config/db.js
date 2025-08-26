@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 const ConnectDB=async()=>{
-    const uri="mongodb+srv://revanthrevi131:3LyaM6DeU1TSLtmb@cluster0.vvaicm9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    const uri=process.env.MONGODB_URI || "mongodb+srv://revanthrevi131:3LyaM6DeU1TSLtmb@cluster0.vvaicm9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 try {
     await mongoose.connect(uri,{dbName:"TodosConnection"})
 
@@ -12,7 +12,6 @@ try {
     
 }
 
-
-
 }
+
 module.exports={ConnectDB}

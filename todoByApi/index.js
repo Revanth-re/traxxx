@@ -15,27 +15,38 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// CORS configuration for production
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://your-frontend-domain.onrender.com", // Replace with your actual frontend URL
+  process.env.FRONTEND_URL // Allow environment variable for frontend URL
+].filter(Boolean); // Remove undefined values
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
 ConnectDB();
 // Port()
-
 
 app.use("/",router)
 // app.get("/api/getAll",getAllProducts)
 
 // app.post("/api/products", addProducts)
 
-
 //     app.put("/api/update/:id", updateTodos)
-
-
-  
-
 
 //     app.put("/api/updateDec/:id",updateDecrease)
 
@@ -47,12 +58,8 @@ app.use("/",router)
 
 // app.put("/api/expiryItems",expiryDateHandler)
 
-      
-  
-
-
 // Start server
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`🚀 Server started on http://localhost:${port}`);
+  console.log(`🚀 Server started on port ${port}`);
 });

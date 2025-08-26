@@ -128,14 +128,14 @@ router.post("/api/login", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const isPasswordValid = bcrypt.compare(password, userData.password);
+    const isPasswordValid = await bcrypt.compare(password, userData.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid password" });
     }
 
     const token = jwt.sign(
       { id: userData._id, name: userData.name },
-      process.env.JWT_SECRET_KEY,
+      process.env.JWT_SECRET || "your_jwt_secret_here",
       { expiresIn: "100d" }
     );
 
