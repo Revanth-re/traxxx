@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
+import config from '../config'
 const Features = () => {
   const [AllData,setAllData]=useState([])
     const navigate=useNavigate()
     const handleItems=()=>{
      
-     axios.get('http://localhost:5000/api/getAll') 
+     axios.get(`${config.API_BASE_URL}/api/getAll`) 
 .then((response) => {
   console.log(response.data);
   
