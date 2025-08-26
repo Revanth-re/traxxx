@@ -24,19 +24,26 @@ const allowedOrigins = [
   "http://localhost:5173",
   ...envOrigins
 ];
+// Allow common host patterns in addition to explicit list
+const allowedOriginPatterns = [
+  /^https:\/\/.+\.vercel\.app$/
+];
 
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || allowedOriginPatterns.some(rx => rx.test(origin))) {
       return callback(null, true);
     }
     return callback(new Error('Not allowed by CORS'));
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
+// Ensure preflight requests are handled
+app.options('*', cors());
 
 ConnectDB();
 
