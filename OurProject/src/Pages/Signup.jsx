@@ -14,7 +14,7 @@
 //     const handleSignup=async(e)=>{
 //         e.preventDefault()
 //         try {
-//             const response=await axios.post("http://localhost:5000//api/signup",signupDetails,  { headers: { "Content-Type": "application/json" }})
+//             const response=await axios.post("https://traxxx-5.onrender.com//api/signup",signupDetails,  { headers: { "Content-Type": "application/json" }})
 
 //             console.log("postedddd");
 //             console.log(response);

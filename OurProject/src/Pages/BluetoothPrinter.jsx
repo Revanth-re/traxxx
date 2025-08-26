@@ -13,7 +13,7 @@
 // //       try {
      
 // //         const response = await axios.get(
-// //           "http://localhost:5000/api/getprintdetails",
+// //           "https://traxxx-5.onrender.com/api/getprintdetails",
 // //           { headers: { Authorization: `Bearer ${userToken}` } }
 // //         );
 // //         setAlldata(response.data);
@@ -116,7 +116,7 @@
 // //       // Send cut command
 // //       await characteristic.writeValue(cutCommand);
 
-// //       const DeletedData=axios.delete("http://localhost:5000/api/deletebillprint",
+// //       const DeletedData=axios.delete("https://traxxx-5.onrender.com/api/deletebillprint",
 // //           { headers: { Authorization: `Bearer ${userToken}` } }
 // //         )
 // // console.log(DeletedData,"deletedData");
@@ -192,7 +192,7 @@
 //   const fetchData = async () => {
 //     try {
 //       const response = await axios.get(
-//         "http://localhost:5000/api/getprintdetails",
+//         "https://traxxx-5.onrender.com/api/getprintdetails",
 //         { headers: { Authorization: `Bearer ${userToken}` } }
 //       );
 //       setAlldata(response.data || []);
@@ -275,7 +275,7 @@
 // //       await characteristic.writeValue(cutCommand);
 
 // //       // Delete printed data
-// //       await axios.delete("http://localhost:5000/api/deletebillprint", {
+// //       await axios.delete("https://traxxx-5.onrender.com/api/deletebillprint", {
 // //         headers: { Authorization: `Bearer ${userToken}` },
 // //       });
 
@@ -287,7 +287,7 @@
 // //   };
 // //   const handleDelete=async()=>{
 
-// //     axios.delete("http://localhost:5000/api/deletebillitems",{
+// //     axios.delete("https://traxxx-5.onrender.com/api/deletebillitems",{
 // //        headers: { Authorization: `Bearer ${userToken}` },
 // //     })
 // // fetchData()
@@ -369,7 +369,7 @@ const BluetoothPrinter = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/getprintdetails",
+        "https://traxxx-5.onrender.com/api/getprintdetails",
         { headers: { Authorization: `Bearer ${userToken}` } }
       );
       setAlldata(response.data || []);
@@ -470,7 +470,7 @@ const printBill = async () => {
     await characteristic.writeValue(cutCommand);
 
     // 🔹 Clear DB after print
-    await axios.delete("http://localhost:5000/api/deletebillprint", {
+    await axios.delete("https://traxxx-5.onrender.com/api/deletebillprint", {
       headers: { Authorization: `Bearer ${userToken}` },
     });
 
@@ -484,7 +484,7 @@ const printBill = async () => {
 
   // Cancel all items
   const handleDelete = async () => {
-    await axios.delete("http://localhost:5000/api/deletebillitems", {
+    await axios.delete("https://traxxx-5.onrender.com/api/deletebillitems", {
       headers: { Authorization: `Bearer ${userToken}` },
     });
     fetchData();

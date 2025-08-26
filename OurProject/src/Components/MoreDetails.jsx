@@ -28,7 +28,7 @@ const increase = async (item, e) => {
 
   try {
     const response = await axios.put(
-      `http://localhost:5000/api/update/${item._id}`,
+      `https://traxxx-5.onrender.com/api/update/${item._id}`,
       {
         counter: count,
         quantity: itemQuant+1
@@ -56,7 +56,7 @@ const increase = async (item, e) => {
 // console.log(count);
 //     // console.log(item);
     
-//     const response =await axios.put(`http://localhost:5000/api/update/${item._id}`, {counter:count}
+//     const response =await axios.put(`https://traxxx-5.onrender.com/api/update/${item._id}`, {counter:count}
 //       , { headers: { "Content-Type": "application/json" } }
 //     ).then((res)=>console.log(res) 
 //     ).catch((err)=>console.log(err)
@@ -79,7 +79,7 @@ const increase = async (item, e) => {
     console.log(currValue,"value");
     
     
-    const response =await axios.put(`http://localhost:5000/api/updateDec/${item._id}`, {counter:decreaseCount}
+    const response =await axios.put(`https://traxxx-5.onrender.com/api/updateDec/${item._id}`, {counter:decreaseCount}
       , { headers: { "Content-Type": "application/json" } }
     ).then((res)=>console.log(res)
     ).catch((err)=>console.log(err)
@@ -94,7 +94,7 @@ const increase = async (item, e) => {
     console.log(item._id);
     const confirmation=confirm("are you sure to delete product")
     if (confirmation) {
-       const response =await axios.delete(`http://localhost:5000/api/delete/${item._id}`)
+       const response =await axios.delete(`https://traxxx-5.onrender.com/api/delete/${item._id}`)
     .then((res)=>  console.log(res)
     
     ).catch((err)=>console.log(err)
@@ -113,7 +113,7 @@ const increase = async (item, e) => {
   const { id } = useParams();
  const fetchOne = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/MoreDetails/${id}`);
+        const response = await axios.get(`https://traxxx-5.onrender.com/api/MoreDetails/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product details:", error);

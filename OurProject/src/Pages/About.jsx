@@ -28,7 +28,7 @@
 //   // console.log(userToken,"usertoken");
 //   const FetchingData = async () => {
 //     await axios
-//       .get("http://localhost:5000/api/getAll", {
+//       .get("https://traxxx-5.onrender.com/api/getAll", {
 //         headers: { Authorization: `Bearer ${userToken}` },
 //       })
 //       .then((response) => {
@@ -62,7 +62,7 @@
 
 //     try {
 //       const response = await axios.put(
-//         `http://localhost:5000/api/update/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/update/${item._id}`,
 //         {
 //           counter: count,
 //           quantity: itemQuant + 1,
@@ -95,7 +95,7 @@
 
 //     const response = await axios
 //       .put(
-//         `http://localhost:5000/api/updateDec/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/updateDec/${item._id}`,
 //         { counter: decreaseCount },
 //         { headers: { "Content-Type": "application/json" } }
 //       )
@@ -107,7 +107,7 @@
   
 //     console.log(res);
 //     const responsees = axios.post(
-//       "http://localhost:5000/api/additionaldata",
+//       "https://traxxx-5.onrender.com/api/additionaldata",
 //       AllData,
 //       { headers: { Authorization: `Bearer ${userToken}` } }
 //     );
@@ -120,7 +120,7 @@
 //     const confirmation = confirm("are you sure to delete product");
 //     if (confirmation) {
 //       const response = await axios
-//         .delete(`http://localhost:5000/api/delete/${item._id}`)
+//         .delete(`https://traxxx-5.onrender.com/api/delete/${item._id}`)
 //         .then((res) => FetchingData())
 //         .catch((err) => console.log(err));
 //     } else {
@@ -139,7 +139,7 @@
 
 //     // };
 //     const response = await axios
-//       .get(`http://localhost:5000/api/MoreDetails/${item._id}`)
+//       .get(`https://traxxx-5.onrender.com/api/MoreDetails/${item._id}`)
 //       .then((res) => setDetails(res.data));
 //     console.log(response, "sijhijs9");
 //     console.log(Details);
@@ -316,7 +316,7 @@
 //   // console.log(userToken,"usertoken");
 //   const FetchingData = async () => {
 //     await axios
-//       .get("http://localhost:5000/api/getAll", {
+//       .get("https://traxxx-5.onrender.com/api/getAll", {
 //         headers: { Authorization: `Bearer ${userToken}` },
 //       })
 //       .then((response) => {
@@ -336,7 +336,7 @@
 
 
 //  const response=await axios
-//       .get("http://localhost:5000/api/getAll", {
+//       .get("https://traxxx-5.onrender.com/api/getAll", {
 //         headers: { Authorization: `Bearer ${userToken}` },
 //       })
   
@@ -394,7 +394,7 @@
 
 //     try {
 //       const response = await axios.put(
-//         `http://localhost:5000/api/update/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/update/${item._id}`,
 //         {
 //           counter: count,
 //           quantity: itemQuant + 1,
@@ -427,7 +427,7 @@
 
 //     const response = await axios
 //       .put(
-//         `http://localhost:5000/api/updateDec/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/updateDec/${item._id}`,
 //         { counter: decreaseCount },
 //         { headers: { "Content-Type": "application/json" } }
 //       )
@@ -439,7 +439,7 @@
   
 //     console.log(res);
 //     const responsees = axios.post(
-//       "http://localhost:5000/api/additionaldata",
+//       "https://traxxx-5.onrender.com/api/additionaldata",
 //       AllData,
 //       { headers: { Authorization: `Bearer ${userToken}` } }
 //     );
@@ -452,7 +452,7 @@
 //     const confirmation = confirm("are you sure to delete product");
 //     if (confirmation) {
 //       const response = await axios
-//         .delete(`http://localhost:5000/api/delete/${item._id}`)
+//         .delete(`https://traxxx-5.onrender.com/api/delete/${item._id}`)
 //         .then((res) => FetchingData())
 //         .catch((err) => console.log(err));
 //     } else {
@@ -471,7 +471,7 @@
 
 //     // };
 //     const response = await axios
-//       .get(`http://localhost:5000/api/MoreDetails/${item._id}`)
+//       .get(`https://traxxx-5.onrender.com/api/MoreDetails/${item._id}`)
 //       .then((res) => setDetails(res.data));
 //     console.log(response, "sijhijs9");
 //     console.log(Details);
@@ -689,7 +689,7 @@
 
 //   const fetchProducts = async () => {
 //     try {
-//       const { data } = await axios.get("http://localhost:5000/api/getAll", {
+//       const { data } = await axios.get("https://traxxx-5.onrender.com/api/getAll", {
 //         headers: { Authorization: `Bearer ${userToken}` },
 //       });
 
@@ -709,7 +709,7 @@
 //     e.stopPropagation();
 //     try {
 //       await axios.put(
-//         `http://localhost:5000/api/update/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/update/${item._id}`,
 //         {
 //           counter: 1,
 //           quantity: item.productQuantity + 1,
@@ -726,7 +726,7 @@
 //     e.stopPropagation();
 //     try {
 //       await axios.put(
-//         `http://localhost:5000/api/updateDec/${item._id}`,
+//         `https://traxxx-5.onrender.com/api/updateDec/${item._id}`,
 //         { counter: -1 },
 //         { headers: { "Content-Type": "application/json" } }
 //       );
@@ -740,7 +740,7 @@
 //     e.stopPropagation();
 //     if (confirm("Are you sure you want to delete this product?")) {
 //       try {
-//         await axios.delete(`http://localhost:5000/api/delete/${item._id}`);
+//         await axios.delete(`https://traxxx-5.onrender.com/api/delete/${item._id}`);
 //         fetchProducts();
 //       } catch (err) {
 //         console.error("Error deleting:", err);
@@ -752,7 +752,7 @@
 //     e.stopPropagation();
 //     try {
 //       const { data } = await axios.get(
-//         `http://localhost:5000/api/MoreDetails/${item._id}`
+//         `https://traxxx-5.onrender.com/api/MoreDetails/${item._id}`
 //       );
 //       setDetails(data);
 //       Navigate(`/MoreDetails/${item._id}`);
@@ -917,7 +917,7 @@ const About = () => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/getAll", {
+      const { data } = await axios.get("https://traxxx-5.onrender.com/api/getAll", {
         headers: { Authorization: `Bearer ${userToken}` },
       });
 
@@ -938,7 +938,7 @@ const About = () => {
     if (item.isExpired) return; // disable for expired
     try {
       await axios.put(
-        `http://localhost:5000/api/update/${item._id}`,
+        `https://traxxx-5.onrender.com/api/update/${item._id}`,
         {
           counter: 1,
           quantity: item.productQuantity + 1,
@@ -956,13 +956,13 @@ const About = () => {
     if (item.isExpired) return; // disable for expired
     try {
       await axios.put(
-        `http://localhost:5000/api/updateDec/${item._id}`,
+        `https://traxxx-5.onrender.com/api/updateDec/${item._id}`,
         { counter: -1 },
         { headers: { "Content-Type": "application/json" } }
       );
       fetchProducts();
 await axios.post(
-        "http://localhost:5000/api/printdetails",
+        "https://traxxx-5.onrender.com/api/printdetails",
         {
           pName: item.productname,
           quantity: item.productQuantity,
@@ -980,7 +980,7 @@ await axios.post(
     e.stopPropagation();
     if (confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/delete/${item._id}`);
+        await axios.delete(`https://traxxx-5.onrender.com/api/delete/${item._id}`);
         fetchProducts();
       } catch (err) {
         console.error("Error deleting:", err);
@@ -993,7 +993,7 @@ await axios.post(
     if (item.isExpired) return; // disable for expired
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/MoreDetails/${item._id}`
+        `https://traxxx-5.onrender.com/api/MoreDetails/${item._id}`
       );
       setDetails(data);
       Navigate(`/MoreDetails/${item._id}`);

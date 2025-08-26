@@ -37,7 +37,7 @@
 //       storeOwner,
 //       products,
 //     };
-//     const postedData= axios.post("http://localhost:5000/api/poststoredata",storeData,{
+//     const postedData= axios.post("https://traxxx-5.onrender.com/api/poststoredata",storeData,{
 //         headers: { Authorization: `Bearer ${userToken}` }
 //       })
 //       console.log(postedData);
@@ -161,7 +161,7 @@ const AddOwnStore = () => {
   useEffect(() => {
     const checkStore = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/getyourproducts", {
+        const res = await axios.get("https://traxxx-5.onrender.com/api/getyourproducts", {
           headers: { Authorization: `Bearer ${userToken}` },
         });
         if (res.data && res.data.length > 0) {
@@ -196,7 +196,7 @@ const AddOwnStore = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/poststoredata", storeData, {
+      await axios.post("https://traxxx-5.onrender.com/api/poststoredata", storeData, {
         headers: { Authorization: `Bearer ${userToken}` },
       });
       alert("Store/products added successfully!");

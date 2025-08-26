@@ -25,7 +25,7 @@ export default function NavbarLayout() {
  
 
     
-  //  axios.get("http://localhost:5000/api/getAll").then((response) => {
+  //  axios.get("https://traxxx-5.onrender.com/api/getAll").then((response) => {
   //     console.log();
 
   //     setAllData(response.data.slice(4,8));

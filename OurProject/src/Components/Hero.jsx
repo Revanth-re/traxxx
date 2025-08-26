@@ -37,7 +37,7 @@
 
 //     try {
 //       const res = await axios.post(
-//         "http://localhost:5000/api/products",
+//         "https://traxxx-5.onrender.com/api/products",
 //         FinalData,
 //           {
 //     headers: { Authorization: `Bearer ${userToken}` }
@@ -301,7 +301,7 @@ const Hero = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/products",
+        "https://traxxx-5.onrender.com/api/products",
         FinalData,
         {
           headers: { Authorization: `Bearer ${userToken}` },

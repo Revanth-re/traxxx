@@ -21,7 +21,7 @@ const ExpiredProducts = () => {
 
   const FetchingData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/getAll", {
+      const response = await axios.get("https://traxxx-5.onrender.com/api/getAll", {
         headers: { Authorization: `Bearer ${userToken}` },
       });
 
@@ -35,7 +35,7 @@ const ExpiredProducts = () => {
 
       // ✅ If you want to update expired products in backend:
       if (expired.length > 0) {
-        await axios.put("http://localhost:5000//api/updateItems", expired, {
+        await axios.put("api/updateItems", expired, {
           headers: { Authorization: `Bearer ${userToken}` },
         });
       }
