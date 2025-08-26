@@ -39,7 +39,14 @@ app.use(cors({
 }));
 
 ConnectDB();
-// Port()
+
+// Health and root endpoints
+app.get("/", (req, res) => {
+  res.json({ status: "ok", service: "dhukaanTracker API" });
+});
+app.get("/health", (req, res) => {
+  res.json({ status: "healthy" });
+});
 
 app.use("/",router)
 // app.get("/api/getAll",getAllProducts)
