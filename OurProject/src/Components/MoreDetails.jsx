@@ -15,81 +15,124 @@ const MoreDetails = ({salesData}) => {
   
     const[count,setCount]=useState(1)
     const[decreaseCount,setDecrease]=useState(-1)
+   
 
 
-const increase = async (item, e) => {
-  // e.stopPropagation();
-
-  // Safely calculate new count
-  
-  setCount(+1); // Update local state
-
-  const itemQuant = item.productQuantity;
+    const increase = async (item) => {
+  // update UI instantly
+  setProduct((prev) =>
+    prev ? { ...prev, productQuantity: prev.productQuantity + 1 } : prev
+  );
 
   try {
-    const response = await axios.put(
+    await axios.put(
       `https://traxxx-5.onrender.com/api/update/${item._id}`,
       {
-        counter: count,
-        quantity: itemQuant+1
+        counter: 1,
+        quantity: item.productQuantity + 1,
       },
-      {
-        headers: { "Content-Type": "application/json" }
-      }
+      { headers: { "Content-Type": "application/json" } }
     );
-
-    console.log("Updated successfully:", response.data);
-    fetchOne();
   } catch (err) {
     console.error("Error updating:", err);
+    fetchOne(); // rollback if failed
+  }
+};
+
+const decrease = async (item) => {
+  if (item.productQuantity <= 0) return; // don’t allow below 0
+
+  // update UI instantly
+  setProduct((prev) =>
+    prev ? { ...prev, productQuantity: prev.productQuantity - 1 } : prev
+  );
+
+  try {
+    await axios.put(
+      `https://traxxx-5.onrender.com/api/updateDec/${item._id}`,
+      { counter: -1 },
+      { headers: { "Content-Type": "application/json" } }
+    );
+  } catch (err) {
+    console.error("Error decreasing:", err);
+    fetchOne(); // rollback if failed
   }
 };
 
 
+// const increase = async (item, e) => {
+//   // e.stopPropagation();
+
+//   // Safely calculate new count
+  
+//   setCount(+1); // Update local state
+
+//   const itemQuant = item.productQuantity;
+
+//   try {
+//     const response = await axios.put(
+//       `https://traxxx-5.onrender.com/api/update/${item._id}`,
+//       {
+//         counter: count,
+//         quantity: itemQuant+1
+//       },
+//       {
+//         headers: { "Content-Type": "application/json" }
+//       }
+//     );
+
+//     console.log("Updated successfully:", response.data);
+//     fetchOne();
+//   } catch (err) {
+//     console.error("Error updating:", err);
+//   }
+// };
+
+
     
 
-//         e.stopPropagation()
+// //         e.stopPropagation()
 
   
       
-//     setCount(+1)
-// console.log(count);
-//     // console.log(item);
+// //     setCount(+1)
+// // console.log(count);
+// //     // console.log(item);
     
-//     const response =await axios.put(`https://traxxx-5.onrender.com/api/update/${item._id}`, {counter:count}
+// //     const response =await axios.put(`https://traxxx-5.onrender.com/api/update/${item._id}`, {counter:count}
+// //       , { headers: { "Content-Type": "application/json" } }
+// //     ).then((res)=>console.log(res) 
+// //     ).catch((err)=>console.log(err)
+// //     )
+// //     console.log(response);
+// //     FetchingData()
+    
+    
+
+
+//   const decrease=async(item,e)=>{
+//     // e.stopPropagation()
+
+//     setDecrease(-1)
+// // console.log(count);
+//     // console.log(item);
+//     console.log(decreaseCount);
+    
+//     const currValue=item.productQuantity
+//     console.log(currValue,"value");
+    
+    
+//     const response =await axios.put(`https://traxxx-5.onrender.com/api/updateDec/${item._id}`, {counter:decreaseCount}
 //       , { headers: { "Content-Type": "application/json" } }
-//     ).then((res)=>console.log(res) 
+//     ).then((res)=>console.log(res)
 //     ).catch((err)=>console.log(err)
 //     )
 //     console.log(response);
-//     FetchingData()
+//     fetchOne()
     
     
 
-
-  const decrease=async(item,e)=>{
-    // e.stopPropagation()
-
-    setDecrease(-1)
-// console.log(count);
-    // console.log(item);
-    console.log(decreaseCount);
-    
-    const currValue=item.productQuantity
-    console.log(currValue,"value");
-    
-    
-    const response =await axios.put(`https://traxxx-5.onrender.com/api/updateDec/${item._id}`, {counter:decreaseCount}
-      , { headers: { "Content-Type": "application/json" } }
-    ).then((res)=>console.log(res)
-    ).catch((err)=>console.log(err)
-    )
-    console.log(response);
-    fetchOne()
-    
-    
-
-  }
+//   }
   const Delete=async(item)=>{
     console.log(item._id);
     const confirmation=confirm("are you sure to delete product")
@@ -146,29 +189,24 @@ const increase = async (item, e) => {
   <div className="flex flex-col items-center sm:items-start  gap-4">
     {/* Buttons + Quantity */}
     <div className="flex items-center gap-2 sm:gap-4">
-      <button
-        onClick={(e) => {
-         
-          decrease(product);
-        }}
-        className="bg-blue-600 hover:bg-yellow-700 text-white text-xs sm:text-sm py-2 px-4 sm:py-3 sm:px-6 rounded"
-      >
-        -
-      </button>
+   <button
+  onClick={() => decrease(product)}
+  className="bg-blue-600 hover:bg-yellow-700 text-white text-xs sm:text-sm py-2 px-4 sm:py-3 sm:px-6 rounded"
+>
+  -
+</button>
 
-      <span className="text-base sm:text-lg lg:text-2xl font-semibold">
-        {product.productQuantity}
-      </span>
+<span className="text-base sm:text-lg lg:text-2xl font-semibold">
+  {product.productQuantity}
+</span>
 
-      <button
-        onClick={(e) => {
-        
-          increase(product);
-        }}
-        className="bg-green-400 hover:bg-yellow-700 text-white text-xs sm:text-sm py-2 px-4 sm:py-3 sm:px-6 rounded"
-      >
-        +
-      </button>
+<button
+  onClick={() => increase(product)}
+  className="bg-green-400 hover:bg-yellow-700 text-white text-xs sm:text-sm py-2 px-4 sm:py-3 sm:px-6 rounded"
+>
+  +
+</button>
+
     </div>
 
     {/* Price & Quantity info */}
