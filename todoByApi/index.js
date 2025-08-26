@@ -44,8 +44,6 @@ app.use(cors({
   credentials: false,
   optionsSuccessStatus: 200
 }));
-// Ensure preflight requests are handled
-app.options('*', cors());
 
 ConnectDB();
 
