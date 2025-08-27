@@ -135,7 +135,7 @@ router.post("/api/login", async (req, res) => {
 
     const token = jwt.sign(
       { id: userData._id, name: userData.name },
-      process.env.JWT_SECRET || "your_jwt_secret_here",
+      (process.env.JWT_SECRET || process.env.JWT_SECRET_KEY || "your_jwt_secret_here"),
       { expiresIn: "100d" }
     );
 

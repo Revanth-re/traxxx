@@ -56,8 +56,9 @@ const VerifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    req.userId = decoded._id; // store user ID from token
+    const jwtSecret = process.env.JWT_SECRET || process.env.JWT_SECRET_KEY || "your_jwt_secret_here";
+    const decoded = jwt.verify(token, jwtSecret);
+    req.userId = decoded._id || decoded.id; // support tokens with either _id or id
     next();
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });
