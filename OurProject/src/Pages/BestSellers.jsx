@@ -81,16 +81,18 @@ const BestSellers = ({ inp = 10 }) => {
         headers: { Authorization: `Bearer ${userToken}` },
       });
 
-      console.log("Data fetched:", response.data);
+      const payload = response?.data;
+      const itemsArray = Array.isArray(payload) ? payload : [];
 
       // Filter products where productQuantity < inp
-      const bestSellers = response.data
+      const bestSellers = itemsArray
         .filter((item) => item.productQuantity < inp)
         .slice(0, 4); // take only first 4 bestsellers
 
       setAllData(bestSellers);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setAllData([]);
     }
   };
 

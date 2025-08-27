@@ -1689,12 +1689,15 @@ const About = () => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get("https://traxxx-5.onrender.com/api/getAll", {
+      const response = await axios.get("https://traxxx-5.onrender.com/api/getAll", {
         headers: { Authorization: `Bearer ${userToken}` },
       });
 
+      const payload = response?.data;
+      const itemsArray = Array.isArray(payload) ? payload : [];
+
       const today = new Date();
-      const updated = data.map((item) => ({
+      const updated = itemsArray.map((item) => ({
         ...item,
         isExpired: new Date(item.ProductExpiry) < today,
       }));
@@ -1702,6 +1705,7 @@ const About = () => {
       setAllProducts(updated);
     } catch (err) {
       console.error("Error fetching products:", err);
+      setAllProducts([]);
     }
   };
 
