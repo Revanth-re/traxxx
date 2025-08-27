@@ -60,7 +60,7 @@ const Signup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`${config.API_BASE_URL}/api/signup`, signupDetails, {
+            await axios.post(`https://traxxx-5.onrender.com/api/signup`, signupDetails, {
                 headers: { "Content-Type": "application/json" }
             });
             navigate("/Login");
